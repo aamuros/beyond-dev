@@ -1,5 +1,7 @@
 <!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Next.js — non-standard build
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+This project runs a modified version of Next.js. APIs, conventions, and file structure diverge from canonical patterns. Do not rely on training-data assumptions.
+
+Before writing code, read the relevant guide in `node_modules/next/dist/docs/`. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->

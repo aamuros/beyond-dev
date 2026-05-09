@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# beyond.dev — Custom Software Studio Website
+
+A full-stack website for beyond.dev, a premium software development studio. Built with Next.js, React, TypeScript, Tailwind CSS, Prisma, and PostgreSQL.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js (Credentials provider)
+- **Email**: Nodemailer
+- **Validation**: Zod
+- **Animation**: Framer Motion
+- **Icons**: Heroicons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database (local or remote)
+
+### Setup
+
+1. Clone the repository and install dependencies:
+
+```bash
+npm install
+```
+
+2. Copy the environment file and configure your values:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your database URL, email settings, and secrets.
+
+3. Set up the database:
+
+```bash
+# Generate Prisma client
+npx prisma generate
+
+# Run migrations
+npx prisma migrate dev --name init
+
+# Seed with sample data
+npx tsx prisma/seed.ts
+
+# Create admin user
+npx tsx src/data/seed-admin.ts
+```
+
+Default admin: `admin@beyond.dev` / `admin123`
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── (public)/           # Public website pages
+│   ├── admin/              # Admin dashboard
+│   ├── api/                # API routes (auth, contact)
+│   ├── layout.tsx          # Root layout
+│   ├── sitemap.ts          # Dynamic sitemap
+│   └── robots.ts           # Robots.txt
+├── components/
+│   ├── ui/                 # Reusable UI primitives
+│   ├── layout/             # Navbar, Footer
+│   ├── sections/           # Page sections
+│   └── admin/              # Admin components
+├── lib/                    # Utilities (auth, email, prisma, rate-limit, seo, validations)
+└── data/                   # Seed scripts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+| Route | Description |
+|-------|-------------|
+| `/` | Home page |
+| `/services` | Services overview |
+| `/process` | Development process |
+| `/work` | Case studies listing |
+| `/work/[slug]` | Individual case study |
+| `/team` | Team members |
+| `/pricing` | Engagement models |
+| `/contact` | Contact form |
+| `/privacy` | Privacy policy |
+| `/terms` | Terms of service |
+| `/admin` | Admin dashboard |
+| `/admin/login` | Admin login |
 
-To learn more about Next.js, take a look at the following resources:
+## Admin Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Dashboard with lead counts and recent activity
+- Lead management (view, filter, status updates, delete)
+- Case study CRUD
+- Team member CRUD
+- Testimonial CRUD
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design
 
-## Deploy on Vercel
+Dark-mode-first with monochrome aesthetics:
+- Deep charcoal backgrounds (`#08090a`)
+- White accent (`#f7f8f8`) — structure and contrast over color
+- Inter + Geist Mono typography
+- Scroll-reveal animations
+- Fully responsive
+- Accessible (keyboard nav, ARIA, reduced motion)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See [DESIGN.md](./DESIGN.md) for the full design system.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+### Vercel
+
+1. Push to GitHub
+2. Connect to Vercel
+3. Add environment variables
+4. Deploy
+
+### Other Platforms
+
+```bash
+npm run build
+npm run start
+```
+
+## Available Scripts
+
+- `npm run dev` — Development server
+- `npm run build` — Production build
+- `npm run start` — Production server
+- `npm run lint` — ESLint
+- `npm run db:generate` — Generate Prisma client
+- `npm run db:migrate` — Run migrations
+- `npm run db:seed` — Seed database
+- `npm run db:studio` — Prisma Studio

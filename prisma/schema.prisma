@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CLOSED
+  ARCHIVED
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  name        String
+  email       String
+  company     String
+  phone       String?
+  budget      String?
+  timeline    String?
+  serviceType String
+  message     String
+  status      LeadStatus @default(NEW)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model CaseStudy {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  industry  String
+  summary   String
+  problem   String
+  solution  String
+  outcome   String
+  techStack String[]
+  imageUrl  String?
+  featured  Boolean  @default(false)
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  bio       String
+  avatarUrl String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  quote      String
+  authorName String
+  authorRole String
+  company    String
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model AdminUser {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
