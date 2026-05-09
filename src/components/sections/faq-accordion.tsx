@@ -46,17 +46,17 @@ function FaqItem({
   onToggle: () => void;
 }) {
   return (
-    <>
+    <div className="border-b border-white/10">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 py-5 text-left cursor-pointer"
+        className="flex w-full items-center justify-between gap-4 px-2 py-5 text-left cursor-pointer"
         aria-expanded={isOpen}
       >
         <span className="text-sm font-medium text-white">{item.question}</span>
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="shrink-0 text-white/40"
+          className="shrink-0 text-white/30 p-1 -m-1"
         >
           <svg
             width="16"
@@ -79,13 +79,13 @@ function FaqItem({
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 pr-8 text-sm leading-6 text-white/60">
+            <p className="pb-5 pr-8 pl-2 text-sm leading-6 text-white/50">
               {item.answer}
             </p>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
@@ -107,7 +107,7 @@ export function FAQAccordion() {
           </p>
         </div>
 
-        <div className="border-y border-white/10 divide-y divide-white/10">
+        <div className="border-t border-white/10">
           {faqItems.map((item, i) => (
             <FaqItem
               key={i}
