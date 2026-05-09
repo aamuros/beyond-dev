@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/sections/contact-form";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Start a project with beyond.dev. Whether you're a student, startup, or business — tell us about your idea and we'll get back to you within one business day.",
+    "Tell us what you need built. We'll review the scope and get back to you with next steps.",
   path: "/contact",
 });
 
@@ -24,10 +24,8 @@ export default function ContactPage() {
               Start a Project
             </h1>
             <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-lg">
-              Whether you&apos;re a student with a thesis project, a small
-              business owner needing a website, or a startup building an MVP
-              — tell us about it and we&apos;ll get back to you within one
-              business day.
+              Tell us what you need built. We&apos;ll review the scope and get
+              back to you with next steps.
             </p>
 
             <div className="mt-10 space-y-4">

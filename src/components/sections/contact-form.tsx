@@ -5,13 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
 const serviceOptions = [
-  "Thesis / Capstone Project",
-  "Student Portfolio Site",
-  "Small Business Website",
-  "Custom Web Application",
-  "SaaS MVP",
-  "Internal Tool / Automation",
-  "API Integration",
+  "Website",
+  "Custom System",
+  "MVP Development",
+  "Student Project",
   "Not sure yet",
 ];
 
@@ -59,7 +56,6 @@ export function ContactForm() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email.";
     }
-    if (!formData.company.trim()) newErrors.company = "Company or school is required.";
     if (!formData.serviceType) newErrors.serviceType = "Please select a service type.";
     if (!formData.message.trim()) newErrors.message = "Message is required.";
 
@@ -125,8 +121,8 @@ export function ContactForm() {
             Start a project
           </h2>
           <p className="text-lg text-text-secondary leading-relaxed mb-10">
-            Tell us about your project and we&apos;ll get back to you within one
-            business day.
+            Tell us what you need built. We&apos;ll review the scope and get
+            back to you with next steps.
           </p>
 
           {status === "success" ? (
@@ -194,7 +190,7 @@ export function ContactForm() {
                 {/* Company / School */}
                 <div>
                   <label htmlFor="company" className={labelStyles}>
-                    Company or School <span className="text-accent">*</span>
+                    Company or School <span className="text-text-muted">(optional)</span>
                   </label>
                   <input
                     id="company"
@@ -202,7 +198,7 @@ export function ContactForm() {
                     type="text"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="Company or school name"
+                    placeholder="Your company or school"
                     className={inputStyles}
                   />
                   {errors.company && (
@@ -221,7 +217,7 @@ export function ContactForm() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+63 9XX XXX XXXX"
+                    placeholder="Your phone number"
                     className={inputStyles}
                   />
                 </div>

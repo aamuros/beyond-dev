@@ -7,7 +7,7 @@ import { CTASection } from "@/components/sections/cta-section";
 export const metadata = createMetadata({
   title: "Services",
   description:
-    "Thesis and capstone projects, small business websites, custom web applications, SaaS MVPs, and internal tools — built for students, startups, and businesses in the Philippines.",
+    "Websites, custom systems, MVP development, and student projects — built from first scope to launch.",
   path: "/services",
 });
 
@@ -26,8 +26,7 @@ export default function ServicesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-6 md:mt-8 text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
-              From student thesis projects to business systems — software built
-              around what you actually need.
+              Software built around what you actually need.
             </p>
           </ScrollReveal>
         </Container>

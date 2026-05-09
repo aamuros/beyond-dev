@@ -18,7 +18,7 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 export const metadata = createMetadata({
   title: "beyond.dev — Custom Software Studio",
   description:
-    "A Philippine-based software studio helping students, startups, and businesses design, build, and launch custom software, web apps, SaaS products, and internal tools.",
+    "A software studio building websites, MVPs, internal tools, and custom systems — from first scope to launch.",
   path: "/",
 });
 

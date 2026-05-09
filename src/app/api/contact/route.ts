@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   try {
     const ip = request.headers.get("x-forwarded-for") || "unknown";
 
-    if (isRateLimited(ip)) {
+    if (await isRateLimited(ip)) {
       return NextResponse.json(
         { error: "Too many submissions. Please try again later." },
         { status: 429 }

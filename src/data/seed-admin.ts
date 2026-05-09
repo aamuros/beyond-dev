@@ -3,7 +3,12 @@ import { prisma } from "@/lib/prisma";
 
 async function main() {
   const email = process.env.ADMIN_EMAIL || "admin@beyond.dev";
-  const password = "admin123";
+  const password = process.env.ADMIN_PASSWORD;
+
+  if (!password) {
+    console.error("Error: ADMIN_PASSWORD environment variable is required. Set it before running the seed script.");
+    process.exit(1);
+  }
 
   const existing = await prisma.adminUser.findUnique({ where: { email } });
 
@@ -23,8 +28,6 @@ async function main() {
   });
 
   console.log(`Admin user created: ${email}`);
-  console.log(`Password: ${password}`);
-  console.log("Please change the password after first login.");
 }
 
 main()

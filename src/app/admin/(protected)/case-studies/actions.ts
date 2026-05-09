@@ -1,42 +1,36 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/admin-auth";
+import { caseStudySchema } from "@/lib/validations";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createCaseStudy(formData: FormData) {
-  const title = formData.get("title") as string;
-  const slug = formData.get("slug") as string;
-  const industry = formData.get("industry") as string;
-  const summary = formData.get("summary") as string;
-  const problem = formData.get("problem") as string;
-  const solution = formData.get("solution") as string;
-  const outcome = formData.get("outcome") as string;
-  const techStackRaw = formData.get("techStack") as string;
-  const imageUrl = formData.get("imageUrl") as string;
-  const featured = formData.get("featured") === "on";
-  const published = formData.get("published") === "on";
+  await requireAdmin();
 
-  const techStack = techStackRaw
-    .split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
-
-  await prisma.caseStudy.create({
-    data: {
-      title,
-      slug,
-      industry,
-      summary,
-      problem,
-      solution,
-      outcome,
-      techStack,
-      imageUrl: imageUrl || null,
-      featured,
-      published,
-    },
+  const parsed = caseStudySchema.safeParse({
+    title: formData.get("title"),
+    slug: formData.get("slug"),
+    industry: formData.get("industry"),
+    summary: formData.get("summary"),
+    problem: formData.get("problem"),
+    solution: formData.get("solution"),
+    outcome: formData.get("outcome"),
+    techStack: (formData.get("techStack") as string)
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    imageUrl: formData.get("imageUrl") || undefined,
+    featured: formData.get("featured") === "on",
+    published: formData.get("published") === "on",
   });
+
+  if (!parsed.success) {
+    throw new Error(parsed.error.issues.map((i) => i.message).join(", "));
+  }
+
+  await prisma.caseStudy.create({ data: parsed.data });
 
   revalidatePath("/admin/case-studies");
   revalidatePath("/admin/dashboard");
@@ -44,40 +38,32 @@ export async function createCaseStudy(formData: FormData) {
 }
 
 export async function updateCaseStudy(formData: FormData) {
+  await requireAdmin();
+
   const id = formData.get("id") as string;
-  const title = formData.get("title") as string;
-  const slug = formData.get("slug") as string;
-  const industry = formData.get("industry") as string;
-  const summary = formData.get("summary") as string;
-  const problem = formData.get("problem") as string;
-  const solution = formData.get("solution") as string;
-  const outcome = formData.get("outcome") as string;
-  const techStackRaw = formData.get("techStack") as string;
-  const imageUrl = formData.get("imageUrl") as string;
-  const featured = formData.get("featured") === "on";
-  const published = formData.get("published") === "on";
 
-  const techStack = techStackRaw
-    .split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
-
-  await prisma.caseStudy.update({
-    where: { id },
-    data: {
-      title,
-      slug,
-      industry,
-      summary,
-      problem,
-      solution,
-      outcome,
-      techStack,
-      imageUrl: imageUrl || null,
-      featured,
-      published,
-    },
+  const parsed = caseStudySchema.safeParse({
+    title: formData.get("title"),
+    slug: formData.get("slug"),
+    industry: formData.get("industry"),
+    summary: formData.get("summary"),
+    problem: formData.get("problem"),
+    solution: formData.get("solution"),
+    outcome: formData.get("outcome"),
+    techStack: (formData.get("techStack") as string)
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    imageUrl: formData.get("imageUrl") || undefined,
+    featured: formData.get("featured") === "on",
+    published: formData.get("published") === "on",
   });
+
+  if (!parsed.success) {
+    throw new Error(parsed.error.issues.map((i) => i.message).join(", "));
+  }
+
+  await prisma.caseStudy.update({ where: { id }, data: parsed.data });
 
   revalidatePath("/admin/case-studies");
   revalidatePath("/admin/case-studies/[id]/edit");
@@ -86,6 +72,7 @@ export async function updateCaseStudy(formData: FormData) {
 }
 
 export async function deleteCaseStudy(formData: FormData) {
+  await requireAdmin();
   const id = formData.get("id") as string;
 
   await prisma.caseStudy.delete({ where: { id } });

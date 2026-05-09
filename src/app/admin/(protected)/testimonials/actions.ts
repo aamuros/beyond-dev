@@ -1,25 +1,27 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/admin-auth";
+import { testimonialSchema } from "@/lib/validations";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createTestimonial(formData: FormData) {
-  const quote = formData.get("quote") as string;
-  const authorName = formData.get("authorName") as string;
-  const authorRole = formData.get("authorRole") as string;
-  const company = formData.get("company") as string;
-  const published = formData.get("published") === "on";
+  await requireAdmin();
 
-  await prisma.testimonial.create({
-    data: {
-      quote,
-      authorName,
-      authorRole,
-      company,
-      published,
-    },
+  const parsed = testimonialSchema.safeParse({
+    quote: formData.get("quote"),
+    authorName: formData.get("authorName"),
+    authorRole: formData.get("authorRole"),
+    company: formData.get("company"),
+    published: formData.get("published") === "on",
   });
+
+  if (!parsed.success) {
+    throw new Error(parsed.error.issues.map((i) => i.message).join(", "));
+  }
+
+  await prisma.testimonial.create({ data: parsed.data });
 
   revalidatePath("/admin/testimonials");
   revalidatePath("/admin/dashboard");
@@ -27,23 +29,23 @@ export async function createTestimonial(formData: FormData) {
 }
 
 export async function updateTestimonial(formData: FormData) {
-  const id = formData.get("id") as string;
-  const quote = formData.get("quote") as string;
-  const authorName = formData.get("authorName") as string;
-  const authorRole = formData.get("authorRole") as string;
-  const company = formData.get("company") as string;
-  const published = formData.get("published") === "on";
+  await requireAdmin();
 
-  await prisma.testimonial.update({
-    where: { id },
-    data: {
-      quote,
-      authorName,
-      authorRole,
-      company,
-      published,
-    },
+  const id = formData.get("id") as string;
+
+  const parsed = testimonialSchema.safeParse({
+    quote: formData.get("quote"),
+    authorName: formData.get("authorName"),
+    authorRole: formData.get("authorRole"),
+    company: formData.get("company"),
+    published: formData.get("published") === "on",
   });
+
+  if (!parsed.success) {
+    throw new Error(parsed.error.issues.map((i) => i.message).join(", "));
+  }
+
+  await prisma.testimonial.update({ where: { id }, data: parsed.data });
 
   revalidatePath("/admin/testimonials");
   revalidatePath("/admin/testimonials/[id]/edit");
@@ -52,6 +54,7 @@ export async function updateTestimonial(formData: FormData) {
 }
 
 export async function deleteTestimonial(formData: FormData) {
+  await requireAdmin();
   const id = formData.get("id") as string;
 
   await prisma.testimonial.delete({ where: { id } });

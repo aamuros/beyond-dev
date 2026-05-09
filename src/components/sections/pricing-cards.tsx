@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container";
 const plans = [
   {
     title: "Student Project",
-    description: "For thesis, capstone, and academic projects.",
+    description: "Thesis, capstone, and academic projects.",
     price: "₱15k",
     priceLabel: "Starting at",
     featured: true,
@@ -21,8 +21,8 @@ const plans = [
     cta: "Get started",
   },
   {
-    title: "Small Business Website",
-    description: "Professional web presence for local businesses.",
+    title: "Website",
+    description: "Professional sites for businesses and portfolios.",
     price: "₱25–60k",
     priceLabel: "Typical range",
     featured: false,
@@ -37,8 +37,8 @@ const plans = [
     cta: "Build your website",
   },
   {
-    title: "Custom App Build",
-    description: "Tailored software for your business needs.",
+    title: "Custom Build",
+    description: "Tailored software for your workflow.",
     price: "₱80k+",
     priceLabel: "Depending on scope",
     featured: false,
@@ -53,8 +53,8 @@ const plans = [
     cta: "Discuss your project",
   },
   {
-    title: "Ongoing Partnership",
-    description: "Continuous development and long-term support.",
+    title: "Ongoing Support",
+    description: "Continuous development and maintenance.",
     price: "Custom",
     priceLabel: "Monthly retainer",
     featured: false,
@@ -77,10 +77,10 @@ export function PricingCards() {
         <ScrollReveal>
           <div className="text-center max-w-xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">
-              Engagement models
+              Pricing
             </h2>
             <p className="mt-4 text-lg text-text-secondary leading-relaxed">
-              Choose the right fit for your project scope and timeline.
+              Clear pricing for common project types.
             </p>
           </div>
         </ScrollReveal>

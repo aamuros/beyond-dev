@@ -2,12 +2,10 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 const services = [
-  { label: "Thesis & Capstone", href: "/#services" },
-  { label: "Business Websites", href: "/#services" },
-  { label: "Web Applications", href: "/#services" },
-  { label: "SaaS MVP", href: "/#services" },
-  { label: "Internal Tools", href: "/#services" },
-  { label: "Portfolio Sites", href: "/#services" },
+  { label: "Websites", href: "/#services" },
+  { label: "Custom Systems", href: "/#services" },
+  { label: "MVP Development", href: "/#services" },
+  { label: "Student Projects", href: "/#services" },
 ];
 
 const company = [
@@ -39,8 +37,8 @@ export function Footer() {
                 beyond<span className="text-text-muted">.dev</span>
               </Link>
               <p className="mt-4 text-sm text-text-secondary leading-relaxed max-w-sm">
-                A Philippine-based software studio that builds custom software
-                for students, startups, and businesses.
+                A software studio building websites, MVPs, internal tools, and
+                custom systems.
               </p>
               <a
                 href="mailto:hello@beyond.dev"

@@ -1,10 +1,8 @@
 import {
   AcademicCapIcon,
-  BuildingStorefrontIcon,
   ComputerDesktopIcon,
   RocketLaunchIcon,
-  WrenchScrewdriverIcon,
-  UserIcon,
+  GlobeAltIcon,
 } from "@heroicons/react/24/outline";
 import { Card } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
@@ -12,40 +10,28 @@ import { Container } from "@/components/ui/container";
 
 const services = [
   {
-    title: "Thesis & Capstone Projects",
+    title: "Websites",
     description:
-      "End-to-end help for CS/IT students — from system design and development to documentation and defense preparation.",
-    icon: AcademicCapIcon,
+      "Professional sites for businesses, portfolios, and online presence.",
+    icon: GlobeAltIcon,
   },
   {
-    title: "Small Business Websites",
+    title: "Custom Systems",
     description:
-      "Professional web presence, online catalogs, booking systems, and e-commerce solutions for local businesses.",
-    icon: BuildingStorefrontIcon,
-  },
-  {
-    title: "Custom Web Applications",
-    description:
-      "Full-stack platforms, portals, dashboards, and business tools designed around your workflow.",
+      "Platforms, dashboards, and internal tools built around your workflow.",
     icon: ComputerDesktopIcon,
   },
   {
-    title: "SaaS MVP Development",
+    title: "MVP Development",
     description:
-      "From product strategy and architecture to a launch-ready SaaS product with authentication, billing, and admin tools.",
+      "From product strategy to a launch-ready product with auth, billing, and admin tools.",
     icon: RocketLaunchIcon,
   },
   {
-    title: "Internal Tools & Automation",
+    title: "Student Projects",
     description:
-      "Replace spreadsheets, manual processes, and disconnected systems with purpose-built software and automated workflows.",
-    icon: WrenchScrewdriverIcon,
-  },
-  {
-    title: "Student Portfolio Sites",
-    description:
-      "Stand out in job applications with a professional portfolio website that showcases your projects and skills.",
-    icon: UserIcon,
+      "End-to-end help for thesis and capstone projects, including documentation and defense prep.",
+    icon: AcademicCapIcon,
   },
 ];
 
@@ -59,13 +45,12 @@ export function ServicesGrid() {
               What we build
             </h2>
             <p className="mt-4 text-lg text-text-secondary leading-relaxed">
-              From student projects to business systems — software built around
-              what you actually need.
+              Software built around what you actually need.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {services.map((service, i) => (
             <ScrollReveal key={service.title} delay={i * 0.08}>
               <Card hover className="h-full group">

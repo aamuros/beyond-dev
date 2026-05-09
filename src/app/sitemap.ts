@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { prisma } from "@/lib/prisma";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://beyond.dev";
 
   const staticPages = [
@@ -15,10 +16,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
   ];
 
-  return staticPages.map((page) => ({
+  const staticEntries: MetadataRoute.Sitemap = staticPages.map((page) => ({
     url: `${baseUrl}${page}`,
     lastModified: new Date(),
     changeFrequency: page === "" ? "weekly" : "monthly",
     priority: page === "" ? 1 : 0.8,
   }));
+
+  const caseStudies = await prisma.caseStudy.findMany({
+    where: { published: true },
+    select: { slug: true, updatedAt: true },
+  });
+
+  const caseStudyEntries: MetadataRoute.Sitemap = caseStudies.map((cs) => ({
+    url: `${baseUrl}/work/${cs.slug}`,
+    lastModified: cs.updatedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...caseStudyEntries];
 }

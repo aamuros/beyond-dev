@@ -170,16 +170,15 @@ export function Hero() {
             className="text-text-primary font-semibold tracking-tight leading-[1.05] max-w-4xl"
             style={{ fontSize: "clamp(2.5rem, 8vw, 6.5rem)" }}
           >
-            We build custom software for teams that need to move faster. Based in the Philippines.
+            Custom software for teams that need to move faster.
           </h1>
         </ScrollReveal>
 
         {/* Subheadline */}
         <ScrollReveal delay={0.1}>
           <p className="mt-6 md:mt-8 text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
-            A Philippine-based software studio helping students, startups, and
-            businesses design, build, and launch web apps, SaaS products,
-            internal tools, and custom software.
+            We build websites, MVPs, internal tools, and custom systems —
+            from first scope to launch.
           </p>
         </ScrollReveal>
 
