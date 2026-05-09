@@ -1,43 +1,36 @@
-import {
-  LightBulbIcon,
-  UserGroupIcon,
-  EyeIcon,
-  ArrowTrendingUpIcon,
-  ChartBarIcon,
-} from "@heroicons/react/24/outline";
 import { Container } from "@/components/ui/container";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const benefits = [
   {
+    number: "01",
     title: "Product-minded engineering",
     description:
       "We help shape the right product, not just write code from tickets.",
-    icon: LightBulbIcon,
   },
   {
+    number: "02",
     title: "Senior execution",
     description:
       "You work directly with builders who understand architecture, design, implementation, and delivery.",
-    icon: UserGroupIcon,
   },
   {
+    number: "03",
     title: "Transparent delivery",
     description:
       "Clear milestones, demos, communication, and documentation throughout the project.",
-    icon: EyeIcon,
   },
   {
+    number: "04",
     title: "Built for scale",
     description:
       "Maintainable code, secure architecture, reliable deployment, and sensible technical decisions.",
-    icon: ArrowTrendingUpIcon,
   },
   {
+    number: "05",
     title: "Business-first thinking",
     description:
       "Every feature is tied to a workflow, efficiency gain, revenue opportunity, or customer outcome.",
-    icon: ChartBarIcon,
   },
 ];
 
@@ -56,15 +49,14 @@ export function WhyUs() {
           </div>
         </ScrollReveal>
 
-        {/* 3+2 grid on desktop, 2+3 also works; using 3-col with last 2 centered */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="divide-y divide-border border-t border-border">
           {benefits.map((benefit, i) => (
-            <ScrollReveal key={benefit.title} delay={i * 0.08}>
-              <div className="rounded-2xl border border-border bg-card p-6 md:p-8 transition-all duration-300 hover:border-border-strong hover:-translate-y-0.5 h-full">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent mb-4">
-                  <benefit.icon className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-medium text-text-primary mb-2">
+            <ScrollReveal key={benefit.number} delay={i * 0.06}>
+              <div className="grid grid-cols-[40px_1fr] md:grid-cols-[40px_200px_1fr] gap-3 md:gap-8 py-6 md:py-8">
+                <span className="text-sm font-mono text-text-faint pt-0.5">
+                  {benefit.number}
+                </span>
+                <h3 className="text-base font-medium text-text-primary">
                   {benefit.title}
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed">

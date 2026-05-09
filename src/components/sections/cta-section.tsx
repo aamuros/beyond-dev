@@ -7,7 +7,7 @@ export function CTASection() {
     <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
       <Container className="relative text-center">
         <ScrollReveal>
-          <h2 className="gradient-text text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto leading-[1.15]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto leading-[1.15]">
             Have a project in mind? Let&apos;s talk about it.
           </h2>
         </ScrollReveal>

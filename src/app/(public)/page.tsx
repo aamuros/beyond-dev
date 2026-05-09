@@ -12,6 +12,7 @@ import { PricingCards } from "@/components/sections/pricing-cards";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { Testimonials } from "@/components/sections/testimonials";
 import { CTASection } from "@/components/sections/cta-section";
+import { ProjectStart } from "@/components/sections/project-start";
 import { Container } from "@/components/ui/container";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
@@ -41,6 +42,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <TrustStrip />
+      <ProjectStart />
       <ServicesGrid />
       <ProcessTimeline />
 

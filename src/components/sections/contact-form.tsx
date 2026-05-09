@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
 
 const serviceOptions = [
   "Website",
@@ -114,28 +113,22 @@ export function ContactForm() {
   const labelStyles = "block text-sm text-text-secondary mb-1.5 font-medium";
 
   return (
-    <section id="contact" className="py-20 md:py-28 lg:py-36">
-      <Container>
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight mb-4">
-            Start a project
-          </h2>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10">
-            Tell us what you need built. We&apos;ll review the scope and get
-            back to you with next steps.
-          </p>
+    <div className="rounded-2xl border border-border bg-surface/50 p-6 md:p-8">
+      <h2 className="text-lg font-semibold text-text-primary tracking-tight mb-6">
+        Project details
+      </h2>
 
-          {status === "success" ? (
-            <div className="rounded-2xl border border-success/30 bg-success/5 p-8 text-center">
-              <h3 className="text-lg font-medium text-success mb-2">
-                Message sent!
-              </h3>
-              <p className="text-sm text-text-secondary">
-                Thanks for reaching out. We&apos;ll be in touch soon.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+      {status === "success" ? (
+        <div className="rounded-xl border border-success/30 bg-success/5 p-8 text-center">
+          <h3 className="text-lg font-medium text-success mb-2">
+            Message sent!
+          </h3>
+          <p className="text-sm text-text-secondary">
+            Thanks for reaching out. We&apos;ll be in touch soon.
+          </p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
               {/* Honeypot */}
               <input
                 type="text"
@@ -227,7 +220,7 @@ export function ContactForm() {
                 {/* Service type */}
                 <div>
                   <label htmlFor="serviceType" className={labelStyles}>
-                    Service type <span className="text-accent">*</span>
+                    What do you need built? <span className="text-accent">*</span>
                   </label>
                   <select
                     id="serviceType"
@@ -253,7 +246,7 @@ export function ContactForm() {
                 {/* Timeline */}
                 <div>
                   <label htmlFor="timeline" className={labelStyles}>
-                    Timeline
+                    When do you need it?
                   </label>
                   <select
                     id="timeline"
@@ -275,7 +268,7 @@ export function ContactForm() {
               {/* Message */}
               <div>
                 <label htmlFor="message" className={labelStyles}>
-                  Message <span className="text-accent">*</span>
+                  Tell us about the project <span className="text-accent">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -283,7 +276,7 @@ export function ContactForm() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project..."
+                  placeholder="What are you building? What should it do? Any deadline or budget range?"
                   className={`${inputStyles} resize-y`}
                 />
                 {errors.message && (
@@ -306,12 +299,10 @@ export function ContactForm() {
                 disabled={status === "submitting"}
                 className="w-full md:w-auto"
               >
-                {status === "submitting" ? "Sending..." : "Send message"}
+                {status === "submitting" ? "Sending..." : "Send inquiry"}
               </Button>
             </form>
           )}
         </div>
-      </Container>
-    </section>
   );
 }

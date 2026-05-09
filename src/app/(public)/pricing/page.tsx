@@ -22,12 +22,12 @@ export default function PricingPage() {
               className="text-text-primary font-semibold tracking-tight text-center leading-[1.1]"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
-              Simple, transparent pricing
+              Simple pricing for focused builds.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-4 md:mt-6 text-lg md:text-xl text-text-secondary leading-relaxed max-w-xl mx-auto text-center">
-              No hidden fees. Pick an engagement model that fits your project.
+              Start small, ship clearly, and scale when needed.
             </p>
           </ScrollReveal>
         </Container>

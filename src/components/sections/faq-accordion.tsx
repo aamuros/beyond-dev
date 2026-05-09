@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { Container } from "@/components/ui/container";
 
 const faqItems = [
   {
@@ -29,7 +27,7 @@ const faqItems = [
   {
     question: "How long does a typical project take?",
     answer:
-      "Student projects and simple websites may take 1-3 weeks. Small business solutions usually take 2-6 weeks. Larger MVPs and custom platforms take 1-3 months depending on scope.",
+      "Student projects and simple websites may take 1–3 weeks. Small business solutions usually take 2–6 weeks. Larger MVPs and custom platforms take 1–3 months depending on scope.",
   },
   {
     question: "Do you provide support after launch?",
@@ -48,21 +46,28 @@ function FaqItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-border">
+    <>
       <button
         onClick={onToggle}
-        className="flex items-center justify-between w-full py-5 text-left cursor-pointer group"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left cursor-pointer"
         aria-expanded={isOpen}
       >
-        <span className="text-base font-medium text-text-primary pr-4 group-hover:text-accent transition-colors">
-          {item.question}
-        </span>
+        <span className="text-sm font-medium text-white">{item.question}</span>
         <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
+          animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="shrink-0"
+          className="shrink-0 text-white/40"
         >
-          <ChevronDownIcon className="w-5 h-5 text-text-muted" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path d="M8 3v10M3 8h10" />
+          </svg>
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
@@ -74,13 +79,13 @@ function FaqItem({
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-text-secondary leading-relaxed max-w-2xl">
+            <p className="pb-5 pr-8 text-sm leading-6 text-white/60">
               {item.answer}
             </p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
@@ -88,18 +93,21 @@ export function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-28 lg:py-36">
-      <Container>
-        <div className="max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight mb-4">
+    <section className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.4fr] lg:items-start">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-widest text-white/40">
+            FAQ
+          </span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-white tracking-tight">
             Frequently asked questions
           </h2>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10">
+          <p className="mt-4 text-base text-white/50 leading-relaxed">
             Common questions about working with us.
           </p>
         </div>
 
-        <div className="max-w-2xl">
+        <div className="border-y border-white/10 divide-y divide-white/10">
           {faqItems.map((item, i) => (
             <FaqItem
               key={i}
@@ -109,7 +117,7 @@ export function FAQAccordion() {
             />
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

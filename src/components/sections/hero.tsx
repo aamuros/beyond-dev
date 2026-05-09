@@ -7,145 +7,145 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const mockupCards = [
   {
-    id: "intake",
-    label: "Project Intake",
+    id: "brief",
+    label: "Project brief",
     className: "col-span-2 md:col-span-1 lg:col-span-2 row-span-2",
     content: (
       <div className="space-y-3">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="h-2 w-2 rounded-full bg-text-muted" />
+          <span className="text-[10px] text-text-muted">Internal doc</span>
+        </div>
         <div className="h-2.5 w-3/4 rounded bg-surface" />
         <div className="h-2.5 w-1/2 rounded bg-surface" />
+        <div className="h-2.5 w-2/3 rounded bg-surface" />
         <div className="mt-4 space-y-2">
-          <div className="h-8 rounded-md bg-surface border border-border" />
-          <div className="h-8 rounded-md bg-surface border border-border" />
-          <div className="h-8 rounded-md bg-surface border border-border" />
+          <div className="flex items-center gap-2">
+            <div className="w-3.5 h-3.5 rounded border border-border" />
+            <div className="h-2.5 w-20 rounded bg-surface" />
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3.5 h-3.5 rounded bg-accent/30 border border-accent/40" />
+            <div className="h-2.5 w-28 rounded bg-surface" />
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3.5 h-3.5 rounded bg-accent/30 border border-accent/40" />
+            <div className="h-2.5 w-24 rounded bg-surface" />
+          </div>
         </div>
-        <div className="h-7 w-24 rounded-md bg-accent/80 mt-2" />
       </div>
     ),
   },
   {
-    id: "roadmap",
-    label: "Roadmap",
+    id: "scope",
+    label: "Scope",
+    className: "col-span-1",
+    content: (
+      <div className="space-y-2.5">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] text-text-muted">In scope</span>
+          <span className="text-[10px] text-accent/60">4 items</span>
+        </div>
+        <div className="space-y-1.5">
+          <div className="h-6 rounded bg-surface border border-border px-2 flex items-center">
+            <div className="h-1.5 w-16 rounded bg-surface-raised" />
+          </div>
+          <div className="h-6 rounded bg-surface border border-border px-2 flex items-center">
+            <div className="h-1.5 w-20 rounded bg-surface-raised" />
+          </div>
+          <div className="h-6 rounded bg-surface border border-border px-2 flex items-center">
+            <div className="h-1.5 w-12 rounded bg-surface-raised" />
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "timeline",
+    label: "Timeline",
     className: "col-span-1",
     content: (
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-accent" />
-          <div className="h-2 w-16 rounded bg-surface" />
+          <div className="h-2 w-2 rounded-full bg-text-primary/80" />
+          <div className="h-2 w-14 rounded bg-surface" />
+          <span className="text-[10px] text-text-muted ml-auto">W1</span>
         </div>
         <div className="h-1.5 w-full rounded-full bg-surface overflow-hidden">
-          <div className="h-full w-3/4 rounded-full bg-accent" />
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-accent/50" />
-          <div className="h-2 w-20 rounded bg-surface" />
-        </div>
-        <div className="h-1.5 w-full rounded-full bg-surface overflow-hidden">
-          <div className="h-full w-1/2 rounded-full bg-accent/50" />
+          <div className="h-full w-full rounded-full bg-text-primary/25" />
         </div>
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 rounded-full bg-text-muted" />
-          <div className="h-2 w-12 rounded bg-surface" />
+          <div className="h-2 w-18 rounded bg-surface" />
+          <span className="text-[10px] text-text-muted ml-auto">W2–3</span>
         </div>
         <div className="h-1.5 w-full rounded-full bg-surface overflow-hidden">
-          <div className="h-full w-1/4 rounded-full bg-text-muted/50" />
+          <div className="h-full w-1/2 rounded-full bg-text-muted/30" />
         </div>
+        <div className="flex items-center gap-2">
+          <div className="h-2 w-2 rounded-full bg-text-faint" />
+          <div className="h-2 w-10 rounded bg-surface" />
+          <span className="text-[10px] text-text-muted ml-auto">W4</span>
+        </div>
+        <div className="h-1.5 w-full rounded-full bg-surface" />
       </div>
     ),
   },
   {
-    id: "sprint",
-    label: "Active Sprint",
+    id: "decisions",
+    label: "Open decisions",
     className: "col-span-1",
     content: (
       <div className="space-y-2">
-        {["Design review", "API endpoint", "Auth flow"].map((task, i) => (
+        {["Auth provider", "Payment gateway", "Hosting"].map((item, i) => (
           <div
-            key={task}
+            key={item}
             className="flex items-center gap-2 py-1.5 px-2 rounded bg-surface"
           >
-            <div
-              className={`w-3.5 h-3.5 rounded border ${
-                i < 2 ? "bg-accent border-accent" : "border-border"
-              }`}
-            />
-            <span
-              className={`text-xs ${
-                i < 2 ? "text-text-muted line-through" : "text-text-secondary"
-              }`}
-            >
-              {task}
-            </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-text-muted/60" />
+            <span className="text-[11px] text-text-secondary">{item}</span>
           </div>
         ))}
       </div>
     ),
   },
   {
-    id: "deploy",
-    label: "Deploy Status",
+    id: "handoff",
+    label: "Handoff",
     className: "col-span-1",
     content: (
-      <div className="flex flex-col items-center justify-center gap-2">
-        <div className="flex items-center gap-1.5">
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-xs text-green-400 font-medium">Live</span>
-        </div>
-        <span className="text-[10px] text-text-muted">v2.4.1 &middot; 99.9% uptime</span>
-      </div>
-    ),
-  },
-  {
-    id: "ai",
-    label: "AI Workflow",
-    className: "col-span-1",
-    content: (
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded bg-accent/20 flex items-center justify-center">
-            <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-            </svg>
+          <div className="h-5 w-5 rounded border border-border flex items-center justify-center">
+            <span className="text-[8px] text-text-muted">DB</span>
           </div>
           <div className="h-2 w-16 rounded bg-surface" />
         </div>
-        <div className="h-2 w-full rounded bg-surface" />
-        <div className="h-2 w-3/4 rounded bg-surface" />
-        <div className="mt-1 h-6 w-20 rounded bg-accent/30" />
-      </div>
-    ),
-  },
-  {
-    id: "analytics",
-    label: "Analytics",
-    className: "col-span-1",
-    content: (
-      <div className="flex items-end gap-1 h-full min-h-[60px]">
-        {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95].map((h, i) => (
-          <div
-            key={i}
-            className="flex-1 rounded-t"
-            style={{
-              height: `${h}%`,
-              background:
-                i >= 8 ? "var(--color-accent)" : "var(--color-surface)",
-            }}
-          />
-        ))}
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded border border-border flex items-center justify-center">
+            <span className="text-[8px] text-text-muted">API</span>
+          </div>
+          <div className="h-2 w-12 rounded bg-surface" />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded border border-border flex items-center justify-center">
+            <span className="text-[8px] text-text-muted">UI</span>
+          </div>
+          <div className="h-2 w-14 rounded bg-surface" />
+        </div>
       </div>
     ),
   },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 0.4,
-      delay: 0.6 + i * 0.08,
+      duration: 0.5,
+      delay: 0.4 + i * 0.06,
       ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     },
   }),
@@ -153,16 +153,7 @@ const cardVariants = {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-12 md:pt-36 md:pb-20 lg:pt-44 lg:pb-28">
-      {/* Background glow */}
-      <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[800px] h-[600px] rounded-full opacity-20"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, var(--color-accent) 0%, transparent 70%)",
-        }}
-      />
-
+    <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 lg:pt-44 lg:pb-28">
       <Container className="relative">
         {/* Headline */}
         <ScrollReveal>
@@ -194,15 +185,19 @@ export function Hero() {
           </div>
         </ScrollReveal>
 
-        {/* Product mockup */}
+        {/* Project artifact mockup */}
         <div className="mt-16 md:mt-20 lg:mt-24">
-          <div className="relative rounded-2xl border border-border bg-card/50 p-4 md:p-6 backdrop-blur-sm">
+          <div className="relative rounded-xl border border-border bg-card/50 p-4 md:p-6">
             {/* Mockup header bar */}
-            <div className="flex items-center gap-2 mb-4 md:mb-6 px-2">
-              <div className="w-3 h-3 rounded-full bg-red-400/60" />
-              <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
-              <div className="w-3 h-3 rounded-full bg-green-400/60" />
-              <div className="ml-4 flex-1 h-5 rounded-md bg-surface/60 max-w-xs" />
+            <div className="flex items-center gap-3 mb-4 md:mb-6 px-1">
+              <div className="flex items-center gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-text-muted/30" />
+                <div className="w-2.5 h-2.5 rounded-full bg-text-muted/30" />
+                <div className="w-2.5 h-2.5 rounded-full bg-text-muted/30" />
+              </div>
+              <span className="text-[11px] text-text-faint ml-2">
+                beyond.dev — Project workspace
+              </span>
             </div>
 
             {/* Mockup grid */}
@@ -214,9 +209,9 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={cardVariants}
-                  className={`rounded-xl border border-border bg-background/80 p-3 md:p-4 ${card.className}`}
+                  className={`rounded-lg border border-border bg-background/80 p-3 md:p-4 ${card.className}`}
                 >
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-2 block">
+                  <span className="text-[10px] font-medium uppercase tracking-wider text-text-faint mb-2 block">
                     {card.label}
                   </span>
                   {card.content}
