@@ -85,7 +85,7 @@ export default async function HomePage() {
             <ScrollReveal>
               <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
                 <h2 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">
-                  Meet our members
+                  Meet our Team
                 </h2>
                 <p className="mt-4 text-lg text-text-secondary leading-relaxed">
                   The people behind beyond.dev. Builders, problem-solvers, and engineers who ship.

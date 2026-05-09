@@ -1,5 +1,4 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Container } from "@/components/ui/container";
@@ -8,6 +7,8 @@ const plans = [
   {
     title: "Student Project",
     description: "For thesis, capstone, and academic projects.",
+    price: "₱15k",
+    priceLabel: "Starting at",
     featured: true,
     items: [
       "System design consultation",
@@ -17,11 +18,13 @@ const plans = [
       "Defense preparation guide",
       "Source code walkthrough",
     ],
-    cta: "Get help with your project",
+    cta: "Get started",
   },
   {
     title: "Small Business Website",
-    description: "For local businesses needing a professional web presence.",
+    description: "Professional web presence for local businesses.",
+    price: "₱25–60k",
+    priceLabel: "Typical range",
     featured: false,
     items: [
       "Responsive design",
@@ -35,7 +38,9 @@ const plans = [
   },
   {
     title: "Custom App Build",
-    description: "For businesses needing tailored software solutions.",
+    description: "Tailored software for your business needs.",
+    price: "₱80k+",
+    priceLabel: "Depending on scope",
     featured: false,
     items: [
       "Discovery and scoping",
@@ -49,7 +54,9 @@ const plans = [
   },
   {
     title: "Ongoing Partnership",
-    description: "For continuous development and long-term support.",
+    description: "Continuous development and long-term support.",
+    price: "Custom",
+    priceLabel: "Monthly retainer",
     featured: false,
     items: [
       "Roadmap planning",
@@ -59,7 +66,7 @@ const plans = [
       "Technical consulting",
       "Priority support",
     ],
-    cta: "Discuss a partnership",
+    cta: "Let's talk",
   },
 ];
 
@@ -68,42 +75,60 @@ export function PricingCards() {
     <section id="pricing" className="py-20 md:py-28 lg:py-36">
       <Container>
         <ScrollReveal>
-          <div className="max-w-2xl mb-12 md:mb-16">
+          <div className="text-center max-w-xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">
-              How we work
+              Engagement models
             </h2>
             <p className="mt-4 text-lg text-text-secondary leading-relaxed">
-              Flexible engagement models based on what you need.
+              Choose the right fit for your project scope and timeline.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {plans.map((plan, i) => (
-            <ScrollReveal key={plan.title} delay={i * 0.08}>
-              <Card
-                className={`h-full flex flex-col ${
-                  plan.featured ? "border-accent/40" : ""
+            <ScrollReveal key={plan.title} delay={i * 0.06}>
+              <div
+                className={`relative flex flex-col h-full rounded-xl p-6 md:p-7 transition-all duration-300 ${
+                  plan.featured
+                    ? "bg-surface-raised border border-[rgba(255,255,255,0.2)] shadow-[0_0_40px_-12px_rgba(255,255,255,0.06)]"
+                    : "bg-card border border-border hover:border-border-strong"
                 }`}
               >
                 {plan.featured && (
-                  <span className="inline-flex self-start items-center rounded-full px-3 py-1 text-xs font-medium bg-accent/10 text-accent border border-accent/20 mb-4">
+                  <span className="inline-flex self-start items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider bg-[rgba(255,255,255,0.08)] text-text-primary border border-[rgba(255,255,255,0.14)] mb-5">
                     Most popular
                   </span>
                 )}
 
-                <h3 className="text-xl font-semibold text-text-primary">
+                <h3 className="text-base font-semibold text-text-primary">
                   {plan.title}
                 </h3>
-                <p className="mt-1 text-sm text-text-secondary">
+
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="text-2xl font-bold text-text-primary tracking-tight">
+                    {plan.price}
+                  </span>
+                  {plan.priceLabel && (
+                    <span className="text-sm text-text-muted">
+                      {plan.priceLabel}
+                    </span>
+                  )}
+                </div>
+
+                <p className="mt-3 text-sm text-text-secondary leading-relaxed">
                   {plan.description}
                 </p>
 
-                <ul className="mt-6 space-y-3 flex-1">
+                <div className="my-6 h-px bg-border" />
+
+                <ul className="space-y-3 flex-1">
                   {plan.items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
-                      <CheckIcon className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                      <span className="text-sm text-text-secondary">{item}</span>
+                      <CheckIcon className="w-4 h-4 text-text-muted mt-0.5 shrink-0" />
+                      <span className="text-sm text-text-secondary">
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -118,7 +143,7 @@ export function PricingCards() {
                     {plan.cta}
                   </Button>
                 </div>
-              </Card>
+              </div>
             </ScrollReveal>
           ))}
         </div>

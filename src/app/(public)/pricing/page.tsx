@@ -6,29 +6,28 @@ import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { CTASection } from "@/components/sections/cta-section";
 
 export const metadata = createMetadata({
-  title: "Engagement Models",
+  title: "Pricing",
   description:
-    "Flexible engagement models for custom software development. Choose the right fit for your project scope and timeline.",
+    "Transparent pricing for every project scope. Choose the right engagement model for your needs.",
   path: "/pricing",
 });
 
 export default function PricingPage() {
   return (
     <>
-      <section className="pt-28 pb-8 md:pt-36 md:pb-12 lg:pt-44 lg:pb-16">
+      <section className="pt-28 pb-2 md:pt-36 md:pb-4 lg:pt-44 lg:pb-4">
         <Container>
           <ScrollReveal>
             <h1
-              className="text-text-primary font-semibold tracking-tight leading-[1.1] max-w-4xl"
-              style={{ fontSize: "clamp(2rem, 6vw, 4.5rem)" }}
+              className="text-text-primary font-semibold tracking-tight text-center leading-[1.1]"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
-              Engagement Models
+              Simple, transparent pricing
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="mt-6 md:mt-8 text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
-              Flexible ways to work together, depending on your project scope,
-              timeline, and budget.
+            <p className="mt-4 md:mt-6 text-lg md:text-xl text-text-secondary leading-relaxed max-w-xl mx-auto text-center">
+              No hidden fees. Pick an engagement model that fits your project.
             </p>
           </ScrollReveal>
         </Container>
