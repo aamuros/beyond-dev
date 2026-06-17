@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       data: {
         name: data.name,
         email: data.email,
-        company: data.company,
+        company: data.company || null,
         phone: data.phone || null,
         budget: null,
         timeline: data.timeline || null,
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       await sendLeadNotification({
         name: data.name,
         email: data.email,
-        company: data.company,
+        company: data.company || null,
         serviceType: data.serviceType,
         message: data.message,
       });

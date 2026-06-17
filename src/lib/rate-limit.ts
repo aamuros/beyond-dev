@@ -7,30 +7,24 @@ export async function isRateLimited(key: string): Promise<boolean> {
   const now = new Date();
   const resetAt = new Date(now.getTime() + WINDOW_MS);
 
-  const record = await prisma.rateLimit.findUnique({ where: { key } });
-
-  if (!record) {
-    await prisma.rateLimit.create({
-      data: { key, count: 1, resetAt },
-    });
-    return false;
-  }
-
-  if (record.resetAt < now) {
-    await prisma.rateLimit.update({
-      where: { key },
-      data: { count: 1, resetAt },
-    });
-    return false;
-  }
-
-  if (record.count >= MAX_SUBMISSIONS) {
-    return true;
-  }
-
-  await prisma.rateLimit.update({
+  // Ensure record exists
+  await prisma.rateLimit.upsert({
     where: { key },
+    create: { key, count: 0, resetAt },
+    update: {},
+  });
+
+  // Atomically reset expired windows
+  await prisma.rateLimit.updateMany({
+    where: { key, resetAt: { lt: now } },
+    data: { count: 0, resetAt },
+  });
+
+  // Atomically increment only if under limit
+  const result = await prisma.rateLimit.updateMany({
+    where: { key, count: { lt: MAX_SUBMISSIONS } },
     data: { count: { increment: 1 } },
   });
-  return false;
+
+  return result.count === 0;
 }

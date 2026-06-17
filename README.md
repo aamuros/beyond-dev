@@ -49,11 +49,11 @@ npx prisma migrate dev --name init
 # Seed with sample data
 npx tsx prisma/seed.ts
 
-# Create admin user
+# Create admin user (set ADMIN_PASSWORD in .env first)
 npx tsx src/data/seed-admin.ts
 ```
 
-Default admin: `admin@beyond.dev` / `admin123`
+`ADMIN_PASSWORD` must be set in `.env` before running the admin seed script.
 
 4. Start the development server:
 

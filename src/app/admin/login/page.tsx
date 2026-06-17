@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
@@ -71,13 +72,14 @@ export default function AdminLoginPage() {
               placeholder="••••••••"
             />
           </div>
-          <button
+          <Button
             type="submit"
+            variant="primary"
             disabled={loading}
-            className="w-full bg-accent text-white rounded-full py-2.5 font-medium hover:bg-accent-hover transition-colors disabled:opacity-50"
+            className="w-full"
           >
             {loading ? "Signing in..." : "Sign in"}
-          </button>
+          </Button>
         </form>
       </div>
     </div>

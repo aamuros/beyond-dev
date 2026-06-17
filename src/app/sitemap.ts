@@ -23,10 +23,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: page === "" ? 1 : 0.8,
   }));
 
-  const caseStudies = await prisma.caseStudy.findMany({
-    where: { published: true },
-    select: { slug: true, updatedAt: true },
-  });
+  let caseStudies: Array<{ slug: string; updatedAt: Date }> = [];
+
+  try {
+    caseStudies = await prisma.caseStudy.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true },
+    });
+  } catch (error) {
+    console.warn("Skipping case study sitemap entries:", error);
+  }
 
   const caseStudyEntries: MetadataRoute.Sitemap = caseStudies.map((cs) => ({
     url: `${baseUrl}/work/${cs.slug}`,
