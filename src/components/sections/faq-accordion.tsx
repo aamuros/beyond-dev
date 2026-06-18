@@ -107,7 +107,7 @@ export function FAQAccordion() {
           </p>
         </div>
 
-        <div className="border-t border-white/10">
+        <div>
           {faqItems.map((item, i) => (
             <FaqItem
               key={i}

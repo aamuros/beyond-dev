@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   HomeIcon,
@@ -29,7 +30,13 @@ export function AdminSidebar({ onClose }: AdminSidebarProps) {
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-2 px-5 py-6">
-        <span className="text-lg font-bold text-text-primary">beyond.dev</span>
+        <Image
+          src="/images/beyond-dev-logo.png"
+          alt="beyond.dev"
+          width={100}
+          height={28}
+          className="h-7 w-auto"
+        />
         <Badge variant="accent">admin</Badge>
       </div>
 

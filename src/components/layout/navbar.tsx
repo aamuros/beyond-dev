@@ -50,11 +50,13 @@ export function Navbar() {
       <Container>
         <nav className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-lg font-semibold text-text-primary tracking-tight"
-          >
-            beyond<span className="text-text-muted">.dev</span>
+          <Link href="/" className="flex items-center">
+            <img
+              src="/images/beyond-logo.svg"
+              alt="Beyond.dev"
+              className="h-[34px] md:h-[42px] w-auto"
+              style={{ imageRendering: "auto" }}
+            />
           </Link>
 
           {/* Desktop navigation */}

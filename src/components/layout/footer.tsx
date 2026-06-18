@@ -30,11 +30,12 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
             {/* Company description */}
             <div className="lg:col-span-2">
-              <Link
-                href="/"
-                className="text-lg font-semibold text-text-primary tracking-tight"
-              >
-                beyond<span className="text-text-muted">.dev</span>
+              <Link href="/" className="flex items-center">
+                <img
+                  src="/images/beyond-logo.svg"
+                  alt="Beyond.dev"
+                  className="h-8 w-auto"
+                />
               </Link>
               <p className="mt-4 text-sm text-text-secondary leading-relaxed max-w-sm">
                 A software studio building websites, MVPs, internal tools, and
